@@ -26,11 +26,31 @@ body {
     width: 75%;
 }
 
-.h100 {
-    height: 100%;
+.h80 {
+    height: 80vh;
 }
 
 .column {
     display: flex;
     flex-direction: column;
+}
+
+hr.solid {
+    border-top: 3px solid #FFF;
+    width: 100%;
+}
+
+.title{
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.mbot0 {
+    margin-bottom: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 }
