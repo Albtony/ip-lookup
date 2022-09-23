@@ -51,6 +51,10 @@ hr.solid {
     height: 50%;
 }
 
+.h100 {
+    height: 100%;
+}
+
 .h80v {
     height: 80vh;
 }
