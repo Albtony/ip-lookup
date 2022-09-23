@@ -5,9 +5,11 @@
 
 body {
     display: flex;
-    padding: 5vh 15vw;
     color: #FFF;
     background: #0d101a;
+    height: 100vh;
+    margin: 0;
+    padding: 0 15vw;
 }
 
 .card {
@@ -34,9 +36,14 @@ hr.solid {
     font-weight: 500;
 }
 
-.center {
+.xcenter {
     display: flex;
     justify-content: center;
+}
+
+.ycenter {
+    display: flex;
+    align-items: center;
 }
 
 .w35 {
