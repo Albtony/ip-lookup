@@ -1,0 +1,36 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    padding: 5vh 15vw;
+    color: #FFF;
+    background: #0d101a;
+}
+
+.card {
+    margin: 10px;
+    padding: 10px 30px;
+	background-color: #101a29;
+	border: 3px solid #FFFFFF;
+	border-radius: 10px;
+}
+
+.w25 {
+    width: 25%;
+}
+
+.w75 {
+    width: 75%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
