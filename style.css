@@ -18,18 +18,6 @@ body {
 	border-radius: 10px;
 }
 
-.w35 {
-    width: 35%;
-}
-
-.w65 {
-    width: 65%;
-}
-
-.h80 {
-    height: 80vh;
-}
-
 .column {
     display: flex;
     flex-direction: column;
@@ -46,11 +34,36 @@ hr.solid {
     font-weight: 500;
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.w35 {
+    width: 35%;
+}
+
+.w65 {
+    width: 65%;
+}
+
+.h50 {
+    height: 50%;
+}
+
+.h80v {
+    height: 80vh;
+}
+
+.mtop0 {
+    margin-top: 0;
+}
+
 .mbot0 {
     margin-bottom: 0;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
+.my10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
