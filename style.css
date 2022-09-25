@@ -25,6 +25,12 @@ body {
     flex-direction: column;
 }
 
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+
 hr.solid {
     border-top: 3px solid #FFF;
     width: 100%;
@@ -72,6 +78,10 @@ hr.solid {
 
 .mbot0 {
     margin-bottom: 0;
+}
+
+.mleft10 {
+    margin-left: 10px;
 }
 
 .my10 {
