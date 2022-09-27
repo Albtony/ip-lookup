@@ -7,33 +7,21 @@ body {
     display: flex;
     color: #FFF;
     background: #0d101a;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    padding: 0 15vw;
-}
-
-.card {
-    margin: 10px;
-    padding: 10px 30px;
-	background-color: #101a29;
-	border: 3px solid #FFFFFF;
-	border-radius: 10px;
+    padding: 0 27vw;
+    align-items: center;
 }
 
 .column {
     display: flex;
     flex-direction: column;
-}
-
-hr.solid {
-    border-top: 3px solid #FFF;
     width: 100%;
 }
 
-.title{
-    color: #FFF;
-    font-size: 24px;
-    font-weight: 500;
+.row {
+    display: flex;
+    flex-direction: row;
 }
 
 .xcenter {
@@ -41,40 +29,96 @@ hr.solid {
     justify-content: center;
 }
 
-.ycenter {
-    display: flex;
-    align-items: center;
+.title {
+    color: #FFF;
+    font-size: 50px;
+    font-weight: 500;
+    margin: 0 0 5px 0;
 }
 
-.w35 {
-    width: 35%;
+.description {
+    color: #d1d1d1;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0 0 10px 0;
 }
 
-.w65 {
-    width: 65%;
+.search-field {
+    text-align: center;
+    border-radius: 30px;
+    border: 2px solid #FFF;
+    padding: 20px; 
+    width: 200px;
+    height: 15px;
+    width: 85%;    
 }
 
-.h50 {
-    height: 50%;
+.ip-info {
+    font-size: 10px;
+    margin: 1px 0 0 0 0;
+    text-align: center;
+    width: 85%;
 }
 
-.h100 {
-    height: 100%;
+.my10vh {
+    margin: 10vh 0;
 }
 
-.h80v {
-    height: 80vh;
+.submit-button {
+    appearance: none;
+    background-color: #f8f9fa;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    margin: 1px 0 1px 20px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+    width: 15%;
 }
 
-.mtop0 {
-    margin-top: 0;
+.submit-button:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
 }
 
-.mbot0 {
-    margin-bottom: 0;
+.submit-button:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
 }
 
-.my10 {
-    margin-top: 10px;
-    margin-bottom: 10px;
+.submit-button:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.submit-button:focus {
+    outline: 1px transparent;
+}
+
+.submit-button:before {
+    display: none;
+}
+
+.submit-button:-webkit-details-marker {
+    display: none;
 }
