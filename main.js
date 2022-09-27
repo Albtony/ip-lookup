@@ -9,7 +9,3 @@ window.findUserIP = async () => {
     let elemIpv4 = document.getElementById('ipv4');
     elemIpv4.innerHTML = `Your current IP is ${ipv4}`;
 }
-
-window.hi = ()=>{
-    alert("hi")
-}
