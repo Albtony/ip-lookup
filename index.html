@@ -13,8 +13,8 @@
         <p class="title xcenter">IP Lookup</p>
         <p class="description xcenter">You can find info about a specific IP or domain name using the input box below</p>
         <div class="row">
-            <input type="text" id="ipORdomain" placeholder="IP or domain name" class="search-field" maxlength="5">
-            <button type="submit" class="submit-button">Search!</button>
+            <input id="ipORdomain" type="text" placeholder="IP or domain name" class="search-field">
+            <button id="addressInput" type="submit" class="submit-button" onclick="findIPInfo()">Search!</button>
         </div>
         <p id="ipv4" class="ip-info"></p>
     </div>
