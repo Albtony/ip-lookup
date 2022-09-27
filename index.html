@@ -14,12 +14,9 @@
         <p class="description xcenter">You can find info about a specific IP or domain name using the input box below</p>
         <div class="row">
             <input type="text" id="ipORdomain" placeholder="IP or domain name" class="search-field" maxlength="5">
-            <button type="submit" class="submit-button" onclick="submitf()">Search!</button>
+            <button type="submit" class="submit-button" onclick="findUserIP()">Search!</button>
         </div>
-        <div class="row">
-            <p class="ip-info">IPv4: </p>
-            <p class="ip-info">IPv6:</p>
-        </div>
+        <p id="ipv4" class="ip-info">IPv4: </p>
     </div>
 </body>
 </html>
