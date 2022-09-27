@@ -54,8 +54,10 @@ body {
 }
 
 .ip-info {
+    font-size: 10px;
+    margin: 1px 0 0 0 0;
     text-align: center;
-    width: 100%;
+    width: 85%;
 }
 
 .my10vh {
