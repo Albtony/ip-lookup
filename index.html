@@ -1,37 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>IP Lookup - DEV</title>
+    <title>IP Lookup</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script  type="module" src="./index.js"></script>
+    <script type="module" src="index.js"></script>
 </head>
-<body class="ycenter">
-    <div class="column w35 h80v">
-        <div class="card h50">
-            <p class="xcenter title mbot0">IP Lookup</p>
-            <hr class="solid">
-            <form>
-                <label for="IP">IP:</label><br>
-                <input type="text" id="IP" name="IP"><br>
-                <button id="submit" onclick="hi()">submit</button>
-            </form>
+<body>
+    <div class="my10vh column">
+        <p class="title xcenter">IP Lookup</p>
+        <p class="description xcenter">You can find info about a specific IP or domain name using the input box below</p>
+        <div class="row">
+            <input type="text" id="ipORdomain" placeholder="IP or domain name" class="search-field" maxlength="5">
+            <button type="submit" class="submit-button" onclick="submitf()">Search!</button>
         </div>
-        <div class="card h50">
-            <p class="xcenter title mbot0">My IP</p>
-            <hr class="solid">
-            <div class="row">IPV4: <p id="ipv4" class="mleft10 mtop0 mbot0">ayo</p></div>
-            <div class="row">IPV6: <p id="ipv6" class="mleft10 mtop0 mbot0">ayo</p></div>
-        </div>
-    </div>
-    <div class="column w65 h80v">
-        <div class="card h100">
-            <div class="column">
-                <p class="xcenter title mbot0">Result</p>
-                <hr class="solid">
-            </div>
+        <div class="row">
+            <p class="ip-info">IPv4: </p>
+            <p class="ip-info">IPv6:</p>
         </div>
     </div>
 </body>
