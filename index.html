@@ -10,13 +10,24 @@
 </head>
 <body onload="findUserIP()">
     <div class="mtop40vh column">
-        <p class="title xcenter">IP Lookup</p>
-        <p class="description xcenter">You can find info about a specific IP or domain name using the input box below</p>
-        <div class="row">
-            <input id="ipORdomain" type="text" class="search-field" placeholder="IP or domain name">
-            <button id="addressInput" type="submit" class="submit-button" onclick="findIPInfo()">Search!</button>
-        </div>
-        <p id="ipv4" class="ip-info"></p>
+        <section id="search-form">
+            <p class="title xcenter">IP Lookup</p>
+            <p class="description xcenter">You can find info about a specific IP or domain name using the input box below</p>
+            <div class="row">
+                <input id="ipORdomain" type="text" class="search-field" placeholder="IP or domain name">
+                <button id="addressInput" type="submit" class="submit-button" onclick="findIPInfo()">Search!</button>
+            </div>
+            <p id="ipv4" class="ip-info"></p>
+        </section>
+        <section if="search-result">
+            <input id="collapsible" class="toggle" type="checkbox" checked>
+            <label for="collapsible" class="lbl-toggle">Result</label>
+            <div class="collapsible-content">
+                <div class="content-inner">
+                    <p>Use the search bar to get result!</p>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 </html>
