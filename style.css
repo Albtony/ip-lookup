@@ -59,6 +59,11 @@ body {
     width: 100%;
 }
 
+.map {
+    width: 100%;
+    height: 200px;
+}
+
 .mtop30vh {
     margin-top: 30vh;
 }
