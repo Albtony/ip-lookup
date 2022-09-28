@@ -23,11 +23,10 @@ window.findIPInfo = async () => {
 }
 
 window.createMap = (longitude, latitude) => {
-    console.log(longitude); // 110.5958
-    console.log(latitude);  // -7.5331
+    const coordinate = [parseFloat(longitude), parseFloat(latitude)];
+    console.log(coordinate);
     const view = new ol.View({
-        // center: ol.proj.fromLonLat([longitude, latitude]),
-        center: ol.proj.fromLonLat([110.5958, -7.5331]),
+        center: ol.proj.fromLonLat(coordinate),
         zoom: 12
     });
     const tile = new ol.layer.Tile({
@@ -37,8 +36,7 @@ window.createMap = (longitude, latitude) => {
         source: new ol.source.Vector({
             features: [
                 new ol.Feature({
-                    // geometry: new ol.geom.Point(ol.proj.fromLonLat([longitude, latitude]))
-                    geometry: new ol.geom.Point(ol.proj.fromLonLat([110.5958, -7.5331]))
+                    geometry: new ol.geom.Point(ol.proj.fromLonLat(coordinate))
                 })
             ]
         })
