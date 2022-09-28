@@ -216,3 +216,17 @@ input[type="checkbox"] {
     color: #a6cc8d;
 }
 /* Result - END */
+
+/* Scrollbar - START */
+::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #0069ff 99%);
+    border-radius: 100px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+}
+/* Scrollbar - END */
