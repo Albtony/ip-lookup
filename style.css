@@ -59,6 +59,16 @@ body {
     width: 100%;
 }
 
+.ip-info {
+    background: #0d101a;
+    position: relative;
+    padding: 10px 20px;
+    overflow-y: auto;
+    border-radius: 5px;
+    list-style: none;
+    margin: 0;
+}
+
 .map {
     width: 100%;
     height: 200px;
@@ -68,7 +78,7 @@ body {
 }
 
 .mtop30vh {
-    margin-top: 30vh;
+    margin: auto 0;
 }
 
 .w50p {
@@ -164,4 +174,21 @@ input[type="checkbox"] {
 
 .collapsible-content p {
     margin: 0;
+}
+
+.ip-info li {
+    font-size: 12px;
+    line-height: 21px;
+    color: #dedede;
+    word-break: break-all;
+    letter-spacing: .15em;
+    font-weight: 400;
+}
+
+.ip-info li .String .value {
+    color: #ff9d9d;
+}
+
+.ip-info li .Number .value {
+    color: #a6cc8d;
 }
