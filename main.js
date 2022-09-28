@@ -19,15 +19,17 @@ window.findIPInfo = async () => {
         return;
     });
     const json = await response.json();
+
+    let map = document.getElementById('map');
+    map.innerHTML = '';
     createMap(json.longitude, json.latitude);
 }
 
 window.createMap = (longitude, latitude) => {
     const coordinate = [parseFloat(longitude), parseFloat(latitude)];
-    console.log(coordinate);
     const view = new ol.View({
         center: ol.proj.fromLonLat(coordinate),
-        zoom: 12
+        zoom: 13
     });
     const tile = new ol.layer.Tile({
         source: new ol.source.OSM()
@@ -41,7 +43,7 @@ window.createMap = (longitude, latitude) => {
             ]
         })
     });
-    let map = new ol.Map({
+    const map = new ol.Map({
         target: 'map',
         layers: [tile, marker],
         view: view
