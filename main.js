@@ -11,11 +11,14 @@ window.main = async () => {
 window.searchIpOrDomain = async () => {
     const input = document.getElementById('ipORdomain').value.trim();
     const regexURL = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+    const regexDomain = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img;
     const regexIpv4 = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/;
     let ip;
 
     if(regexURL.test(input)) {
-        const response = await fetch(`https://dns.google/resolve?name=${input}`);
+        const domain = input.match(regexDomain);
+        console.log(domain);
+        const response = await fetch(`https://dns.google/resolve?name=${domain}`);
         const json = await response.json();
         if(json.Answer) ip = json.Answer[0].data;
         else ip = null;
