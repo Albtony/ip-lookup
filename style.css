@@ -229,3 +229,18 @@ input[type="checkbox"] {
     background-clip: content-box;
 }
 /* Scrollbar - END */
+/* Popup - START*/
+.popup {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    opacity: 1;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    color: #FFF;
+    transition: opacity 0.3s;
+}
+/* Popup - END*/
