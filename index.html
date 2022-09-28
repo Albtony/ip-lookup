@@ -4,8 +4,9 @@
     <title>IP Lookup</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" type="text/css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <script type="module" src="main.js"></script>
 </head>
 <body onload="findUserIP()">
@@ -24,7 +25,15 @@
             <label for="collapsible" class="lbl-toggle">Result</label>
             <div class="collapsible-content">
                 <div class="content-inner">
-                    <p>Use the search bar to get result!</p>
+                    <div class="row">
+                        <div class="column">
+                            <p>ISP:</p>
+                            <p>City:</p>
+                            <p>Region:</p>
+                            <p>Country:</p>
+                            <p>Timezone:</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
