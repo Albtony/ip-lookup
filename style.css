@@ -12,6 +12,7 @@ body {
     padding: 0 27vw;
 }
 
+/* Container - START */
 .column {
     display: flex;
     flex-direction: column;
@@ -22,7 +23,8 @@ body {
     display: flex;
     flex-direction: row;
 }
-
+/* Container - END */
+/* BEM - START */
 .xcenter {
     display: flex;
     justify-content: center;
@@ -35,6 +37,15 @@ body {
     margin: 0 0 5px 0;
 }
 
+.mtop30vh {
+    margin: auto 0;
+}
+
+.w50p {
+    width: 50%;
+}
+/* BEM - END */
+/* Search Form - START */
 .description {
     color: #d1d1d1;
     font-size: 20px;
@@ -58,33 +69,8 @@ body {
     text-align: center;
     width: 100%;
 }
-
-.ip-info {
-    background: #0d101a;
-    position: relative;
-    padding: 10px 20px;
-    overflow-y: auto;
-    border-radius: 5px;
-    list-style: none;
-    margin: 0;
-}
-
-.map {
-    width: 100%;
-    height: 200px;
-    border: 8px solid #0069ff;
-    border-radius: 5px;
-    margin: 0 0 0 10px;
-}
-
-.mtop30vh {
-    margin: auto 0;
-}
-
-.w50p {
-    width: 50%;
-}
-
+/* Search Form - END */
+/* Submit Button - START */
 .submit-button {
     appearance: none;
     background-color: #24c06c;
@@ -109,12 +95,27 @@ body {
 .submit-button:focus {
     outline: 1px transparent;
 }
-
-input[type="checkbox"] {
-    display: none;
+/* Submit Button - END */
+/* Result - START */
+.map {
+    height: 200px;
+    border: 8px solid #0069ff;
+    border-radius: 5px;
+    margin: 0 0 0 10px;
 }
 
-.lbl-toggle {
+.ip-info {
+    background: #0d101a;
+    position: relative;
+    padding: 10px 20px;
+    overflow-y: auto;
+    border-radius: 5px;
+    list-style: none;
+    margin: 0;
+    max-height: 200px;
+}
+
+.result-title {
     display: block;
     font-weight: bold;
     font-family: monospace;
@@ -124,17 +125,24 @@ input[type="checkbox"] {
     padding: 5px;
     color: #ddd;
     background: #0069ff;
-    cursor: pointer;
     border-radius: 7px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.collapsible-toggle {
+    cursor: pointer;
     transition: all 0.25s ease-out;
 }
 
-.lbl-toggle:hover {
+.collapsible-toggle:hover {
     color: #fff;
 }
 
-.lbl-toggle::before {
-    content: " ";
+.collapsible-toggle::before {
+    content: '';
     display: inline-block;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
@@ -145,7 +153,7 @@ input[type="checkbox"] {
     transition: transform 0.2s ease-out;
 }
 
-.toggle:checked + .lbl-toggle::before {
+.toggle:checked + .collapsible-toggle::before {
     transform: rotate(90deg) translateX(-3px);
 }
 
@@ -155,25 +163,36 @@ input[type="checkbox"] {
     transition: max-height 0.25s ease-in-out;
 }
 
-.toggle:checked + .lbl-toggle + .collapsible-content {
+.toggle:checked + .collapsible-toggle + .collapsible-content {
     max-height: 350px;
 }
 
-.toggle:checked + .lbl-toggle {
+.toggle:checked + .collapsible-toggle {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.collapsible-content .content-inner {
+.result > .content-inner {
     background: rgba(0, 105, 255, 0.2);
     border-bottom: 1px solid rgba(0, 105, 255, 0.45);
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
     padding: 0.5rem 1rem;
+    max-height: 350px;
 }
 
-.collapsible-content p {
+.content-inner p {
     margin: 0;
+}
+
+.ip-info .collapsible-toggle::after {
+    content: 'Object';
+    margin-left: 0.4rem;
+    color: #ff6e00;
+}
+
+.ip-info ul {
+    padding-left: 2rem;
 }
 
 .ip-info li {
@@ -185,6 +204,10 @@ input[type="checkbox"] {
     font-weight: 400;
 }
 
+.ip-info .content-inner li {
+    list-style: none;
+}
+
 .ip-info li .String .value {
     color: #ff9d9d;
 }
@@ -192,3 +215,4 @@ input[type="checkbox"] {
 .ip-info li .Number .value {
     color: #a6cc8d;
 }
+/* Result - END */
