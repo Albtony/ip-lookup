@@ -47,7 +47,7 @@ window.getUserIP = async () => {
 
 window.getIPdata = async (ip) => {
     if(!/^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/.test(ip)) return;
-    const uri = `http://ipwho.is/${ip}`;
+    const uri = `https://ipwho.is/${ip}`;
     const response = await fetch(uri).catch((err) => {
         console.warn(err);
         return;
