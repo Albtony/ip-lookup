@@ -8,28 +8,14 @@ window.main = async () => {
     createResult(data);
 }
 
-window.searchIpOrDomain = async () => {
+window.searchIpOrDomain = async (domain, recursive) => {
     const input = document.getElementById('ipORdomain').value.trim();
-    const regexURL = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
-    const regexDomain = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img;
-    const regexIpv4 = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/;
-    let ip;
+    const ip = await getIpFromInput(input);
 
-    if(regexURL.test(input)) {
-        const domain = input.match(regexDomain);
-        console.log(domain);
-        const response = await fetch(`https://dns.google/resolve?name=${domain}`);
-        const json = await response.json();
-        if(json.Answer) ip = json.Answer[0].data;
-        else ip = null;
-    } else if(regexIpv4.test(input)) {
-        ip = input;
-    } else {
-        createTemporaryPopup('Please check your input', '#ff3e3e', 5);
+    if(ip == -1) {
+        createTemporaryPopup('please check your input', '#ff3e3e', 5);
         return;
-    }
-
-    if(!ip) {
+    } else if(!ip) {
         createTemporaryPopup('no result was found', '#ff3e3e', 5);
         return;
     }
@@ -240,4 +226,42 @@ window.createInfo = (info, data) => {
 
 window.waitFor = async (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+window.getIpFromInput = async (input) => {
+    const regexTestUri = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+    const regexTestIp = /((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/;
+    const regexMatchDomain = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img;
+    let ip, domain;
+
+    if(regexTestUri.test(input)) {
+        domain = input.match(regexMatchDomain);
+        const response = await fetch(`https://dns.google/resolve?name=${domain}`).catch((err) => {
+            console.warn(err);
+            return;
+        });
+        const json = await response.json();
+        
+        if(json.Answer) {
+            if(regexTestIp.test(json.Answer[0].data)) {
+                ip = json.Answer[0].data;
+            } else {
+                domain = `www.${json.Answer[0].data}`
+                ip = getIpFromInput(domain);
+                return ip;
+            }
+        } else if(json.Authority) {
+            domain = `www.${json.Authority[0].data}`;
+            ip = getIpFromInput(domain);
+            return ip;
+        } else {
+            ip = null;
+        }
+    } else if(regexTestIp.test(input)) {
+        ip = input;
+    } else {
+        ip = -1;
+    }
+
+    return ip;
 }
