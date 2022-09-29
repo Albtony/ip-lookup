@@ -58,7 +58,8 @@ window.createMap = (longitude, latitude) => {
     const coordinate = [parseFloat(longitude), parseFloat(latitude)];
     const view = new ol.View({
         center: ol.proj.fromLonLat(coordinate),
-        zoom: 13
+        zoom: 13,
+        maxZoom: 16
     });
     const tile = new ol.layer.Tile({
         source: new ol.source.OSM()
