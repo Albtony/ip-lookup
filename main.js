@@ -94,6 +94,7 @@ window.createTemporaryPopup = async (message, color, duration) => {
 }
 
 window.createInfo = (info, data) => {
+    document.getElementById("result").checked = true;
     info.innerHTML += 
         `                            
             <li>
