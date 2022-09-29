@@ -229,34 +229,46 @@ window.waitFor = async (ms) => {
 }
 
 window.getIpFromInput = async (input) => {
-    const regexTestUri = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
+    const regexTestUrl = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/;
     const regexTestIp = /((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/;
-    const regexMatchDomain = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/img;
     let ip, domain;
-
-    if(regexTestUri.test(input)) {
-        domain = input.match(regexMatchDomain);
+    console.log(input)
+    if(regexTestUrl.test(input)) {
+        const url = new URL(input);
+        domain = url.hostname;
         const response = await fetch(`https://dns.google/resolve?name=${domain}`).catch((err) => {
             console.warn(err);
             return;
         });
         const json = await response.json();
-        
+        console.log(json);
         if(json.Answer) {
-            if(regexTestIp.test(json.Answer[0].data)) {
-                ip = json.Answer[0].data;
-            } else {
-                domain = `www.${json.Answer[0].data}`
-                ip = getIpFromInput(domain);
-                return ip;
+            const answer = json.Answer;
+            for(const entry of answer) {
+                const data = entry.data;
+                if(regexTestIp.test(data)) {
+                    ip = data;
+                    break;
+                } else if(regexTestUrl.test(data)) {
+                    ip = getIpFromInput(data);
+                    break;
+                }
             }
         } else if(json.Authority) {
-            domain = `www.${json.Authority[0].data}`;
-            ip = getIpFromInput(domain);
-            return ip;
+            const auth = json.Authority;
+            for(const entry of auth) {
+                const data = entry.data;
+                if(regexTestIp.test(data)) {
+                    ip = data;
+                    break;
+                } else if(regexTestUrl.test(data)) {
+                    ip = getIpFromInput(data);
+                    break;
+                }
+            }
         } else {
             ip = null;
-        }
+        }  
     } else if(regexTestIp.test(input)) {
         ip = input;
     } else {
