@@ -39,9 +39,10 @@ body {
 }
 /* Container - END */
 /* BEM - START */
-.xcenter {
+.center {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .title {
