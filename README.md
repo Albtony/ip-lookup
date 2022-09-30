@@ -1,6 +1,7 @@
 ### IP-Lookup
 Simple IP-Lookup web that allows you to get info such as `ip, location, connection, and timezone` from IP or domain.
-built with:
+
+Built with:
 <ul>
     <li> HTML, CSS, JS
     <li> <a href="https://ipwhois.io/">Ipwhois</a>, <a href="https://www.ipify.org/">Ipify</a>, <a href="https://dns.google/">Google DNS</a>
