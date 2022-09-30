@@ -58,7 +58,7 @@ body {
 }
 
 .w50p {
-    width: 50%;
+    width: 49%;
 }
 /* BEM - END */
 /* Search Form - START */
@@ -116,14 +116,13 @@ body {
 }
 /* Submit Button - END */
 /* Result - START */
-
-
 .map {
     height: 200px;
     border: 8px solid #0069ff;
     border-radius: 5px;
     height: 180px;
     min-width: 270px;
+    margin: 0.5rem 0.2rem;
 }
 
 .ip-info {
@@ -136,6 +135,7 @@ body {
     margin: 0;
     height: 180px;
     min-width: 270px;
+    margin: 0.5rem 0.2rem;
 }
 
 .result-title {
