@@ -12,6 +12,20 @@ body {
     padding: 0 27vw;
 }
 
+.background-image {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background-image: url('./assets/background-image.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: -1;
+}
+
 /* Container - START */
 .column {
     display: flex;
