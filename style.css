@@ -115,6 +115,7 @@ body {
     height: 200px;
     border: 8px solid #0069ff;
     border-radius: 5px;
+    min-width: 270px;
 }
 
 .ip-info {
@@ -126,6 +127,7 @@ body {
     list-style: none;
     margin: 0;
     max-height: 200px;
+    min-width: 270px;
 }
 
 .result-title {
