@@ -216,7 +216,7 @@ window.createInfo = (info, data) => {
                             <li>
                                 <div class="String">
                                     <span class="key">current_time:</span>
-                                    <span class="value">${data.timezone.utc}</span>
+                                    <span class="value">${data.timezone.current_time}</span>
                                 </div>
                             </li>
                         </ul>
