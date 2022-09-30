@@ -11,4 +11,4 @@ built with:
 Just copy and paste whatever ip or domain you wish to get info <a href="albtony.github.io/IP-Lookup/">here</a>
 
 #### Sneak Peek
-![demo](https://user-images.githubusercontent.com/78489357/193196915-f5e2d720-d443-4112-999c-21f5f3939c94.png)
+![demo](https://user-images.githubusercontent.com/78489357/193197225-3552c72e-95ef-4e5f-90cb-ea479155b80d.png)
