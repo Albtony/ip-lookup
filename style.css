@@ -116,7 +116,7 @@ body {
     height: 200px;
     border: 8px solid #0069ff;
     border-radius: 5px;
-    margin: 0 0 0 10px;
+    width: 50%;
 }
 
 .ip-info {
