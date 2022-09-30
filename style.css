@@ -279,9 +279,7 @@ input[type="checkbox"] {
     .submit-button {
         width: 20%;
     }
-}
 
-@media only screen and (max-width: 600px) {
     .result {
         width: 290px;
     }
