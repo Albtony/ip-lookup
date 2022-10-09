@@ -1,5 +1,5 @@
 ### IP-Lookup
-Slightly responsive IP-Lookup web that allows you to get info such as `ip, location, connection, and timezone` from IP or domain.
+Responsive single page application IP-Lookup web that allows you to get info such as `ip, location, connection, and timezone` from IP or domain.
 
 Built with:
 <ul>
