@@ -10,6 +10,7 @@ Built with:
 
 #### How to use?
 Just copy and paste whatever ip or domain you wish to get info <a href="https://albtony.github.io/IP-Lookup/">here</a>
+Don't forget to add the "https://" part, or it wont work XD. Just copy and paste any links you want from the top portion of the web and you are good to go!
 
 #### Sneak Peek
 ![demo](https://user-images.githubusercontent.com/78489357/193197225-3552c72e-95ef-4e5f-90cb-ea479155b80d.png)
