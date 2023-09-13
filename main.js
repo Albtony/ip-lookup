@@ -13,7 +13,7 @@ window.searchIpOrDomain = async (domain, recursive) => {
     const ip = await getIpFromInput(input);
 
     if(ip == -1) {
-        createTemporaryPopup('please check your input', '#ff3e3e', 5);
+        createTemporaryPopup('please check your input (don\'t forget to add the \"https://\" part)', '#ff3e3e', 5);
         return;
     } else if(!ip) {
         createTemporaryPopup('no result was found', '#ff3e3e', 5);
